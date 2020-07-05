@@ -26,8 +26,11 @@ public class CalculatorUtil {
      * @return string : the new delimiter if it matches otherwise null
      */
     public static String getNewDelimiter(String string) {
-        if (string.startsWith("//") && string.substring(3, 4).equalsIgnoreCase("\n")) {
-            return string.substring(2, 3);
+        if (string.startsWith("//") ){
+           int indexOfSlashN=string.indexOf("\n");
+           if(indexOfSlashN!=-1) {
+               return string.substring(2, indexOfSlashN);
+           }
         }
         return null;
     }
@@ -47,6 +50,24 @@ public class CalculatorUtil {
             return string.substring(newString.length(),strLength);
         }
         return string;
+    }
+
+    /**
+     * Utility for formatting the dangling metacharacters
+     * @param newDelimiter the delimiter
+     * @return the formatted delimiter
+     */
+    public static String formatDelimiter(String newDelimiter) {
+        String[] str=newDelimiter.split("");
+        StringBuilder finalFormat=new StringBuilder();
+        for(String s:str){
+            if("+*^".contains(s)){
+                finalFormat.append("\\").append(s);
+            }
+            else
+                finalFormat.append(s);
+        }
+        return finalFormat.toString();
     }
 
 }

@@ -91,11 +91,11 @@ public class CalculatorTest {
         Assert.assertEquals(0, Calculator.Add("//;\n"));
         Assert.assertEquals(3, Calculator.Add("//;\n1;2"));
         Assert.assertEquals(9, Calculator.Add("//;\n1;2\n6"));
-        Assert.assertEquals(99, Calculator.Add("//;\n091;2\n6"));
+
     }
 
     @Test
-    public void tesException() {
+    public void testException() {
         try {
             Calculator.Add("//;\n-5;-10");
         } catch (CalculatorException e) {
@@ -106,7 +106,14 @@ public class CalculatorTest {
     }
 
     @Test
-    public void tesGreaterThan1000() throws CalculatorException{
+    public void testGreaterThan1000() throws CalculatorException{
         Assert.assertEquals(99, Calculator.Add("//;\n091;2\n1006"));
+    }
+
+    @Test
+    public void testTask7() throws CalculatorException{
+       // Assert.assertEquals(6, Calculator.Add("//***\n1***2***3"));
+       // Assert.assertEquals(6, Calculator.Add("//+++\n1+++2+++3"));
+        Assert.assertEquals(99, Calculator.Add("//;\n091;2\n6"));
     }
 }

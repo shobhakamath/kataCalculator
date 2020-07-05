@@ -34,6 +34,7 @@ public class CalculatorUtilTest {
         Assert.assertEquals(",", CalculatorUtil.getNewDelimiter("//,\n"));
         Assert.assertEquals("~", CalculatorUtil.getNewDelimiter("//~\n"));
         Assert.assertEquals("~", CalculatorUtil.getNewDelimiter("//~\n123"));
+        Assert.assertEquals("ABC",CalculatorUtil.getNewDelimiter("//ABC\n123"));
     }
 
     @Test
@@ -45,7 +46,10 @@ public class CalculatorUtilTest {
         Assert.assertEquals("",
                 CalculatorUtil.getFinalString("",""));
         Assert.assertNull(CalculatorUtil.getFinalString(null,null));
+    }
 
-
+    @Test
+    public void testFormattedDelimiter(){
+        Assert.assertEquals("\\*\\*\\*", CalculatorUtil.formatDelimiter("***"));
     }
 }
