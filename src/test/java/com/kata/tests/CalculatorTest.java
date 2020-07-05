@@ -44,9 +44,12 @@ public class CalculatorTest {
         Assert.assertEquals(2, Calculator.Add("A,2.5,null"));
     }
 
-    @Test (expected = CalculatorException.class)
+    @Test(expected = CalculatorException.class)
     public void test_passNegative() throws CalculatorException {
         Assert.assertEquals(0, Calculator.Add("0,-2.5,3"));
+        Assert.assertEquals(9, Calculator.Add("09\n-2.5\n3"));
+        Assert.assertEquals(0, Calculator.Add("09\\n-2.5\\n3"));
+        Assert.assertEquals(3, Calculator.Add("09/\n-2.5/\n3"));
     }
 
     @Test(expected = CalculatorException.class)
@@ -59,29 +62,28 @@ public class CalculatorTest {
         Assert.assertEquals(2959488, Calculator.Add("09,-2.5,3,6,7,4,09,87,233,2334234,565,567567,56767"));
     }
 
-    @Test
-    public void test_BiggestNumberAnIntegerCanHold() throws CalculatorException {
-        Assert.assertEquals(2147483647, Calculator.Add("2147483647,78,89,34"));
-    }
-
     @Test(expected = CalculatorException.class)
     public void test_SmallestNumberAnIntegerCanHold() throws CalculatorException {
         Assert.assertEquals(-2147483648, Calculator.Add("-2147483647,-7,-90,-89"));
     }
 
     @Test
+    public void test_BiggestNumberAnIntegerCanHold() throws CalculatorException {
+        Assert.assertEquals(2147483647, Calculator.Add("2147483647,78,89,34"));
+    }
+
+
+    @Test
     public void testAllowNewDelimiter() throws CalculatorException {
         Assert.assertEquals(6, Calculator.Add("1\n2,3"));
     }
 
-    @Test(expected = CalculatorException.class)
+    @Test
     public void testNewLineNumbers() throws CalculatorException {
         Assert.assertEquals(1, Calculator.Add("1,\n"));
         Assert.assertEquals(3, Calculator.Add("1,\n2"));
         Assert.assertEquals(2, Calculator.Add("1;,\n2"));
-        Assert.assertEquals(9, Calculator.Add("09\n-2.5\n3"));
-        Assert.assertEquals(0, Calculator.Add("09\\n-2.5\\n3"));
-        Assert.assertEquals(3, Calculator.Add("09/\n-2.5/\n3"));
+
     }
 
     @Test
