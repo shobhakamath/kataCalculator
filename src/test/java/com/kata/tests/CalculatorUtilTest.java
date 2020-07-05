@@ -4,6 +4,8 @@ import com.kata.util.CalculatorUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * Test class to check the isNumeric utility function
  */
@@ -30,26 +32,26 @@ public class CalculatorUtilTest {
     @Test
     public void testNewDelimiter() {
         //Checking for length=1 delimiter
-        Assert.assertEquals(";", CalculatorUtil.getNewDelimiter("//;\n"));
-        Assert.assertEquals(",", CalculatorUtil.getNewDelimiter("//,\n"));
-        Assert.assertEquals("~", CalculatorUtil.getNewDelimiter("//~\n"));
-        Assert.assertEquals("~", CalculatorUtil.getNewDelimiter("//~\n123"));
-        Assert.assertEquals("ABC",CalculatorUtil.getNewDelimiter("//ABC\n123"));
+        Assert.assertEquals("[;]", Arrays.toString(CalculatorUtil.getNewDelimiter("//;\n")));
+        Assert.assertEquals("[,]", Arrays.toString(CalculatorUtil.getNewDelimiter("//,\n")));
+        Assert.assertEquals("[~]", Arrays.toString(CalculatorUtil.getNewDelimiter("//~\n")));
+        Assert.assertEquals("[~]", Arrays.toString(CalculatorUtil.getNewDelimiter("//~\n123")));
+        Assert.assertEquals("[ABC]", Arrays.toString(CalculatorUtil.getNewDelimiter("//ABC\n123")));
     }
 
     @Test
     public void testFinalString() {
         Assert.assertEquals("123", CalculatorUtil.getFinalString("//~\n123",
                 CalculatorUtil.getNewDelimiter("//~\n123")));
-        Assert.assertEquals("",
+      Assert.assertEquals("",
                 CalculatorUtil.getFinalString("//~\n", CalculatorUtil.getNewDelimiter("//~\n")));
         Assert.assertEquals("",
-                CalculatorUtil.getFinalString("",""));
-        Assert.assertNull(CalculatorUtil.getFinalString(null,null));
+                CalculatorUtil.getFinalString("", new String[]{""}));
+        Assert.assertNull(CalculatorUtil.getFinalString(null, null));
     }
 
     @Test
-    public void testFormattedDelimiter(){
-        Assert.assertEquals("\\*\\*\\*", CalculatorUtil.formatDelimiter("***"));
+    public void testFormattedDelimiter() {
+        Assert.assertEquals("\\*\\*\\*", CalculatorUtil.formatDelimiter(new String[]{"***"}));
     }
 }
