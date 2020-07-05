@@ -82,4 +82,12 @@ public class CalculatorTest {
         Assert.assertEquals(0, Calculator.Add("09\\n-2.5\\n3"));
         Assert.assertEquals(3, Calculator.Add("09/\n-2.5/\n3"));
     }
+
+    @Test
+    public void testNewDelimiter(){
+        Assert.assertEquals(0, Calculator.Add("//;\n"));
+        Assert.assertEquals(3, Calculator.Add("//;\n1;2"));
+        Assert.assertEquals(9, Calculator.Add("//;\n1;2\n6"));
+        Assert.assertEquals(99, Calculator.Add("//;\n091;2\n6"));
+    }
 }
