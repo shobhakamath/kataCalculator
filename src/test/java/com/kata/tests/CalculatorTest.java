@@ -121,4 +121,10 @@ public class CalculatorTest {
     public void testTask8() throws CalculatorException{
         Assert.assertEquals(6, Calculator.Add("//[*][%]\n1*2%3"));
     }
+    @Test
+    public void testTask9() throws CalculatorException{
+        Assert.assertEquals(10, Calculator.Add("//[*][%][***]\n1*2%3***4"));
+        Assert.assertEquals(15, Calculator.Add("//[*][%][***][******]\n1*2%3***4******5"));
+        Assert.assertEquals(15, Calculator.Add("//[^][%][***][^^****]\n1^2%3***4^^****5"));
+    }
 }

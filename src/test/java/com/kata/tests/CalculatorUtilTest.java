@@ -54,4 +54,12 @@ public class CalculatorUtilTest {
     public void testFormattedDelimiter() {
         Assert.assertEquals("\\*\\*\\*", CalculatorUtil.formatDelimiter(new String[]{"***"}));
     }
+
+    @Test
+    public void testFormatDelimiterDescendingOrder(){
+        Assert.assertEquals("\\^\\^\\*\\*\\*\\*|\\*\\*\\*|\\*|\\^", CalculatorUtil.formatDelimiter(new String[]{"***","*","^","^^****"}));
+
+
+
+    }
 }
