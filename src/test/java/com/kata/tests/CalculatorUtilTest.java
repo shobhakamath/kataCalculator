@@ -1,6 +1,6 @@
 package com.kata.tests;
 
-import com.kata.CalculatorUtil;
+import com.kata.util.CalculatorUtil;
 import org.junit.Assert;
 import org.junit.Test;
 

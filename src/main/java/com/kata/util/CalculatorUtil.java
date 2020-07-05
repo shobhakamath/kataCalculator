@@ -1,4 +1,6 @@
-package com.kata;
+package com.kata.util;
+
+import com.kata.exception.CalculatorException;
 
 import java.text.MessageFormat;
 import java.util.regex.Pattern;
@@ -45,6 +47,6 @@ public class CalculatorUtil {
             return string.substring(newString.length(),strLength);
         }
         return string;
-
     }
+
 }
