@@ -69,7 +69,7 @@ public class CalculatorTest {
 
     @Test
     public void test_BiggestNumberAnIntegerCanHold() throws CalculatorException {
-        Assert.assertEquals(2147483647, Calculator.Add("2147483647,78,89,34"));
+        Assert.assertEquals(849, Calculator.Add("2147483647,78,89,34"));
     }
 
 
@@ -103,5 +103,10 @@ public class CalculatorTest {
             Assert.assertEquals("negatives not allowed [-5.0, -10.0]", e.getMessage());
         }
 
+    }
+
+    @Test
+    public void tesGreaterThan1000() throws CalculatorException{
+        Assert.assertEquals(99, Calculator.Add("//;\n091;2\n1006"));
     }
 }
