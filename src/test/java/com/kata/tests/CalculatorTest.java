@@ -62,8 +62,24 @@ public class CalculatorTest {
     public void test_BiggestNumberAnIntegerCanHold() {
         Assert.assertEquals(2147483647, Calculator.Add("2147483647,78,89,34"));
     }
+
     @Test
     public void test_SmallestNumberAnIntegerCanHold() {
         Assert.assertEquals(-2147483648, Calculator.Add("-2147483647,-7,-90,-89"));
+    }
+
+    @Test
+    public void testAllowNewDelimiter() {
+        Assert.assertEquals(6, Calculator.Add("1\n2,3"));
+    }
+
+    @Test
+    public void testNewLineNumbers() {
+        Assert.assertEquals(1, Calculator.Add("1,\n"));
+        Assert.assertEquals(3, Calculator.Add("1,\n2"));
+        Assert.assertEquals(2, Calculator.Add("1;,\n2"));
+        Assert.assertEquals(9, Calculator.Add("09\n-2.5\n3"));
+        Assert.assertEquals(0, Calculator.Add("09\\n-2.5\\n3"));
+        Assert.assertEquals(3, Calculator.Add("09/\n-2.5/\n3"));
     }
 }
