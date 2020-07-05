@@ -30,6 +30,9 @@ public class Calculator {
                     if(floatVal<0){
                         lstFloat.add(floatVal);
                     }
+                    else if(floatVal>1000){
+                        floatVal=floatVal%1000;
+                    }
                     if(lstFloat.size()==0)
                          sum +=floatVal;
 
