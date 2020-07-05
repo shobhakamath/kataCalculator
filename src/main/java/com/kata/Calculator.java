@@ -17,9 +17,10 @@ public class Calculator {
     public static int Add(String numbers) throws CalculatorException{
         float sum = 0;
         if (numbers != null && numbers.length() > 0) {
-            String newDelimiter = CalculatorUtil.getNewDelimiter(numbers);
-            String[] split = CalculatorUtil.getFinalString(numbers, newDelimiter).split(SEPARATOR +
-                    (newDelimiter != null && newDelimiter.length() > 0 ? "|" + CalculatorUtil.formatDelimiter(newDelimiter) : ""));
+            String[] newDelimiter = CalculatorUtil.getNewDelimiter(numbers);
+            String separator=SEPARATOR +
+                    (newDelimiter != null && newDelimiter.length > 0 ? "|" + CalculatorUtil.formatDelimiter(newDelimiter) : "");
+            String[] split = CalculatorUtil.getFinalString(numbers, newDelimiter).split(separator);
 
             List<Float> lstFloat=new ArrayList<>();
             //The method can take any number of numbers and count them

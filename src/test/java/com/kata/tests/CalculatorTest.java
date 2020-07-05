@@ -112,8 +112,13 @@ public class CalculatorTest {
 
     @Test
     public void testTask7() throws CalculatorException{
-       // Assert.assertEquals(6, Calculator.Add("//***\n1***2***3"));
-       // Assert.assertEquals(6, Calculator.Add("//+++\n1+++2+++3"));
+        Assert.assertEquals(6, Calculator.Add("//***\n1***2***3"));
+        Assert.assertEquals(6, Calculator.Add("//+++\n1+++2+++3"));
         Assert.assertEquals(99, Calculator.Add("//;\n091;2\n6"));
+    }
+
+    @Test
+    public void testTask8() throws CalculatorException{
+        Assert.assertEquals(6, Calculator.Add("//[*][%]\n1*2%3"));
     }
 }
