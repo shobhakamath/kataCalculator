@@ -84,7 +84,9 @@ public class CalculatorUtil {
      * @return the formatted delimiter
      */
     public static String formatDelimiter(String[] newDelimiter) {
-
+        Arrays.sort(newDelimiter,( s1,  s2)-> {
+                return s2.length() - s1.length();// comparision
+            });
         StringBuilder finalFormat = new StringBuilder();
         for (String delimiter : newDelimiter) {
             if(finalFormat.length()>0){
