@@ -9,7 +9,7 @@ import org.junit.Test;
  */
 public class CalculatorUtilTest {
     @Test
-    public void testIsNumeric(){
+    public void testIsNumeric() {
         Assert.assertTrue(CalculatorUtil.isNumeric("25"));
         Assert.assertTrue(CalculatorUtil.isNumeric("2.5"));
         Assert.assertTrue(CalculatorUtil.isNumeric("-12"));
@@ -28,11 +28,24 @@ public class CalculatorUtilTest {
     }
 
     @Test
-    public void testNewDelimiter(){
+    public void testNewDelimiter() {
         //Checking for length=1 delimiter
-        Assert.assertEquals(";",CalculatorUtil.getNewDelimiter("//;\n"));
-        Assert.assertEquals(",",CalculatorUtil.getNewDelimiter("//,\n"));
-        Assert.assertEquals("~",CalculatorUtil.getNewDelimiter("//~\n"));
-        Assert.assertEquals("~",CalculatorUtil.getNewDelimiter("//~\n123"));
+        Assert.assertEquals(";", CalculatorUtil.getNewDelimiter("//;\n"));
+        Assert.assertEquals(",", CalculatorUtil.getNewDelimiter("//,\n"));
+        Assert.assertEquals("~", CalculatorUtil.getNewDelimiter("//~\n"));
+        Assert.assertEquals("~", CalculatorUtil.getNewDelimiter("//~\n123"));
+    }
+
+    @Test
+    public void testFinalString() {
+        Assert.assertEquals("123", CalculatorUtil.getFinalString("//~\n123",
+                CalculatorUtil.getNewDelimiter("//~\n123")));
+        Assert.assertEquals("",
+                CalculatorUtil.getFinalString("//~\n", CalculatorUtil.getNewDelimiter("//~\n")));
+        Assert.assertEquals("",
+                CalculatorUtil.getFinalString("",""));
+        Assert.assertNull(CalculatorUtil.getFinalString(null,null));
+
+
     }
 }
