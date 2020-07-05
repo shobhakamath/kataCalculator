@@ -26,4 +26,13 @@ public class CalculatorUtilTest {
         Assert.assertFalse(CalculatorUtil.isNumeric("0xFF"));
         Assert.assertFalse(CalculatorUtil.isNumeric("1.2e+8"));
     }
+
+    @Test
+    public void testNewDelimiter(){
+        //Checking for length=1 delimiter
+        Assert.assertEquals(";",CalculatorUtil.getNewDelimiter("//;\n"));
+        Assert.assertEquals(",",CalculatorUtil.getNewDelimiter("//,\n"));
+        Assert.assertEquals("~",CalculatorUtil.getNewDelimiter("//~\n"));
+        Assert.assertEquals("~",CalculatorUtil.getNewDelimiter("//~\n123"));
+    }
 }
