@@ -1,7 +1,7 @@
 package com.kata;
 
 public class Calculator {
-    static final String SEPARATOR = ",";
+    static final String SEPARATOR = ",|\n";
 
     /**
      * @param numbers : numbers is the string being passed
